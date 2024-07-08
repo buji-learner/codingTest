@@ -38,11 +38,14 @@ def yes_biggest(sorted_list, original_list):
     length = len(original_list)
 
     idx = sorted_list.index(original_list[0])
-    print(f'{idx}, the first num would be {sorted_list[idx+1]}')
+    for i in range(length-idx):
+        if sorted_list[idx+i] > sorted_list[idx]:
+            first_num = sorted_list[idx+i]
+    print(f'{idx}, the first num would be {first_num}')
 
-    result = sorted_list[idx+1] * pow(10,length-1)
+    result = first_num * pow(10,length-1)
 
-    del sorted_list[idx+1]
+    sorted_list.remove(first_num)
     
     result += smallest(sorted_list)
     return result
@@ -71,19 +74,24 @@ def check_biggest(test_num, original_list, sorted_list):
 
 #### --------------------------------------------------
 
-input_num = 4151
+input_num = 1154
 
 original_list = toList(input_num)
 sorted_list = sorted(original_list)
 print(f'original is {original_list}, sorted is {sorted_list}') 
 
-length = len(original_list)
-test_num = input_num%pow(10, length-1)  
+if input_num == biggest(sorted_list):
+    print('There would be no answer. You already solved as much as you can!')
 
-print(f'test number 1 : {test_num} to test {sorted(toList(test_num))}')  
+else :
 
-result = 0
-result = check_biggest(test_num, original_list, sorted_list)
+    length = len(original_list)
+    test_num = input_num%pow(10, length-1)  
+
+    print(f'test number 1 : {test_num} to test {sorted(toList(test_num))}')  
+
+    result = 0
+    result = check_biggest(test_num, original_list, sorted_list)
 
 
-print(result)
+    print(result)
