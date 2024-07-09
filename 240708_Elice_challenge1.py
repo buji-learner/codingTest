@@ -28,11 +28,13 @@ def smallest(list):
 
 def yes_biggest(sorted_list, original_list):
     length = len(original_list)
+
     idx = sorted_list.index(original_list[0])
 
-    for i in range(length-idx):
-        if sorted_list[idx+i] > sorted_list[idx]:
-            first_num = sorted_list[idx+i]
+    print(original_list, sorted_list)
+    first_num = sorted_list[idx+1]
+    print(idx, first_num)
+    
 
     result = first_num * pow(10,length-1)
 
@@ -59,7 +61,7 @@ def check_biggest(test_num, original_list, sorted_list):
 
 #### --------------------------------------------------
 
-input_num = 1234
+input_num = 3565
 
 original_list = toList(input_num)
 sorted_list = sorted(original_list)

@@ -32,7 +32,7 @@ def smallest(list):
 
 # --------------
 
-input_num = 3416
+input_num = 346
 
 original_list = toList(input_num)
 sorted_list = sorted(original_list)
@@ -63,6 +63,7 @@ else :
     original_list = original_list[1:]
     sorted_list = sorted(original_list)
     print(f'new original is {original_list}, new sorted is {sorted_list}') 
+    
     test_num = test_num%pow(10, length-1)
     print(f'test number 2 : {test_num} to test {sorted(toList(test_num))}') 
     if test_num == biggest(sorted(toList(test_num))): 
