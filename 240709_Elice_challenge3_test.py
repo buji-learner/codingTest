@@ -30,7 +30,22 @@ def K_repeat(S):
     K = int(S[0])
     S_Q = S[2:-1]
     # print(f'{type(K)} K is {K}, {type(S_Q)} Q is {S_Q}')
-    return K * len(S_Q)
+    # return K * len(S_Q)
+    return S_Q * K
 
 S = '3(82)'
-print(K_repeat(S))
+S = '34)'
+# print(K_repeat(S))
+
+# '(' 만나면 +1, ')' 만나면 -1
+stack = 0
+
+length = len(S)
+for i in range(length):
+    if S[i] == '(': stack += 1
+    elif S[i] == ')': stack -= 1
+
+    if stack < 0:
+        print('not VPS')
+        break
+    
