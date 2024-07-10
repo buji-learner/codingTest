@@ -22,7 +22,22 @@ output 26
 
 #### 함수
 # 문자열 유효한지 확인
-# def is_VPS:
+def is_VPS(S):
+    length = len(S)
+    list_S = []
+    for i in range(length):
+        if S[i] == '(': list_S.append(1)
+        elif S[i] == ')': list_S.append(-1)
+        else : list_S.append(0)
+
+        if sum(list_S) < 0:
+            return False
+    if sum(list_S) != 0:
+        return False
+    return True
+# print('test is_VPS')
+# print(is_VPS('456())(145'))
+# print('------------')
 
 # K(Q) >>> Q를 K번 반복하는 문자열로 반환
 def K_repeat(S):
@@ -79,7 +94,7 @@ def extract_bracket(S):
 
 ####------------------
 
-S = '13)(42(7))8'
+S = '13(42(7))8'
 
 new_S = extract_bracket(S)
 print(f'second is {new_S}')
