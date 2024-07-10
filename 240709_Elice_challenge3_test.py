@@ -59,15 +59,25 @@ def extract_bracket(S):
 
     print(f'list_S is {list_S}')
     print(f'location of open/close bracket {idx_open}, {idx_close}')
-    return idx_open, idx_close, list_S
-S = '3(82)' 
-extract_bracket(S)
+    return min(idx_open), max(idx_close), list_S
+# S = '3(82)' 
+# extract_bracket(S)
 
 ####------------------
 
-S = '3(82)'
-# S = '34)'
-# print(K_repeat(S))
+S = '123(4)56(7)8'
+print(extract_bracket(S))
+idx_open = extract_bracket(S)[0]
+idx_close = extract_bracket(S)[1]
+new_S = S[idx_open+1:idx_close]
+print(f'second S is {new_S}')
+# idx_open = extract_bracket(new_S)[0]
+# idx_close = extract_bracket(new_S)[1]
+# new_S = new_S[idx_open+1:idx_close]
+# print(f'third S is {new_S}')
+
+
+
 
 """ 함수 extract_bracket으로 필요없어짐
 # '(' 만나면 +1, ')' 만나면 -1
