@@ -29,7 +29,8 @@ def K_repeat(S):
     # K는 한 자리 수, Q를 K번 반복
     K = int(S[0])
     S_Q = S[2:-1]
-    print(f'{type(K)} K is {K}, {type(Q)} Q is {S_Q}')
+    # print(f'{type(K)} K is {K}, {type(S_Q)} Q is {S_Q}')
+    return K * len(S_Q)
 
 S = '3(82)'
-K_repeat(S)
+print(K_repeat(S))
