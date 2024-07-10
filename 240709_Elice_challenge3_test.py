@@ -49,18 +49,24 @@ def extract_bracket(S):
         elif S[i] == ')': 
             list_S.append(-1)
             idx_close.append(i)
+            bracket_S = S[max(idx_open)-1:max(idx_close)+1]
+            K = bracket_S[0] # str
+            Q = bracket_S[2: len(bracket_S)-1]
+            print(f'{bracket_S}, K is {K}, Q is {Q}')
+            return S.replace(bracket_S, Q*int(K))
+
         else : list_S.append(0)
 
         if sum(list_S) < 0:
             print(f"{S} is not VPS.")
             break
-        if len(idx_open) > 0 and sum(list_S) == 0:
-            print('here!')
-            bracket_S = S[min(idx_open)-1:max(idx_close)+1]
-            K = bracket_S[0] # str
-            Q = bracket_S[2: len(bracket_S)-1]
-            print(f'{bracket_S}, K is {K}, Q is {Q}')
-            return S.replace(bracket_S, Q*int(K))
+        # if len(idx_open) > 0 and sum(list_S) == 0:
+        #     print('here!')
+        #     bracket_S = S[min(idx_open)-1:max(idx_close)+1]
+        #     K = bracket_S[0] # str
+        #     Q = bracket_S[2: len(bracket_S)-1]
+        #     print(f'{bracket_S}, K is {K}, Q is {Q}')
+        #     return S.replace(bracket_S, Q*int(K))
 
     # if sum(list_S) != 0:
     #     print(f"----{S} is not VPS.----")
@@ -73,8 +79,15 @@ def extract_bracket(S):
 
 ####------------------
 
-S = '123(45(7))8'
-print(extract_bracket(S))
+S = '13)(42(7))8'
+
+new_S = extract_bracket(S)
+print(f'second is {new_S}')
+new_S = extract_bracket(new_S)
+print(f'third is {new_S}')
+
+
+
 # idx_open = extract_bracket(S)[0]
 # idx_close = extract_bracket(S)[1]
 # new_S = S[idx_open+1:idx_close]
