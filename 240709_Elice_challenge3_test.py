@@ -54,23 +54,31 @@ def extract_bracket(S):
         if sum(list_S) < 0:
             print(f"{S} is not VPS.")
             break
-    if sum(list_S) != 0:
-        print(f"{S} is not VPS.")
+        if len(idx_open) > 0 and sum(list_S) == 0:
+            print('here!')
+            bracket_S = S[min(idx_open)-1:max(idx_close)+1]
+            K = bracket_S[0] # str
+            Q = bracket_S[2: len(bracket_S)-1]
+            print(f'{bracket_S}, K is {K}, Q is {Q}')
+            return S.replace(bracket_S, Q*int(K))
 
-    print(f'list_S is {list_S}')
-    print(f'location of open/close bracket {idx_open}, {idx_close}')
-    return min(idx_open), max(idx_close), list_S
+    # if sum(list_S) != 0:
+    #     print(f"----{S} is not VPS.----")
+
+    # print(f'list_S is {list_S}')
+    # print(f'location of open/close bracket {idx_open}, {idx_close}')
+    # return min(idx_open), max(idx_close), list_S
 # S = '3(82)' 
 # extract_bracket(S)
 
 ####------------------
 
-S = '123(4)56(7)8'
+S = '123(45(7))8'
 print(extract_bracket(S))
-idx_open = extract_bracket(S)[0]
-idx_close = extract_bracket(S)[1]
-new_S = S[idx_open+1:idx_close]
-print(f'second S is {new_S}')
+# idx_open = extract_bracket(S)[0]
+# idx_close = extract_bracket(S)[1]
+# new_S = S[idx_open+1:idx_close]
+# print(f'second S is {new_S}')
 # idx_open = extract_bracket(new_S)[0]
 # idx_close = extract_bracket(new_S)[1]
 # new_S = new_S[idx_open+1:idx_close]
