@@ -31,10 +31,10 @@ def is_VPS(S):
         else : list_S.append(0)
 
         if sum(list_S) < 0:
-            return False
+            return False, list_S
     if sum(list_S) != 0:
-        return False
-    return True
+        return False, list_S
+    return True, list_S
 # print('test is_VPS')
 # print(is_VPS('456())(145'))
 # print('------------')
@@ -48,28 +48,32 @@ def K_repeat(S):
     # print(f'{type(K)} K is {K}, {type(S_Q)} Q is {S_Q}')
     # return K * len(S_Q)
     return S_Q * K
+# print('test2')
+# print(K_repeat('2(45)'))
+# print(K_repeat('2(7)'))
 
 # 가장 큰  단위의 () 추출
 # 반환값은 첫번째 ( 인덱스, 마지막 ) 인덱스, 숫자로 표현된 input_S 
 def extract_bracket(S):
+    # print(f'S is {S}')
     length = len(S)
-
     list_S = []
     idx_open = []
     idx_close = []
     for i in range(length):
+        # print(i)
         if S[i] == '(': 
-            list_S.append(1)
             idx_open.append(i)
-        elif S[i] == ')': 
-            list_S.append(-1)
+        elif S[i] == ')':
+            # print('-----')
             idx_close.append(i)
             bracket_S = S[max(idx_open)-1:max(idx_close)+1]
-            K = bracket_S[0] # str
-            Q = bracket_S[2: len(bracket_S)-1]
-            print(f'{bracket_S}, K is {K}, Q is {Q}')
-            return S.replace(bracket_S, Q*int(K))
-
+            # print('here', bracket_S, K_repeat(S))
+            # K = bracket_S[0] # str
+            # Q = bracket_S[2: len(bracket_S)-1]
+            # print(f'{bracket_S}, K is {K}, Q is {Q}')
+            new_S = S.replace(bracket_S, K_repeat(bracket_S))
+            return new_S
         else : list_S.append(0)
 
         if sum(list_S) < 0:
@@ -82,7 +86,7 @@ def extract_bracket(S):
         #     Q = bracket_S[2: len(bracket_S)-1]
         #     print(f'{bracket_S}, K is {K}, Q is {Q}')
         #     return S.replace(bracket_S, Q*int(K))
-
+    return ''
     # if sum(list_S) != 0:
     #     print(f"----{S} is not VPS.----")
 
@@ -95,11 +99,26 @@ def extract_bracket(S):
 ####------------------
 
 S = '13(42(7))8'
+# S = input()
 
-new_S = extract_bracket(S)
-print(f'second is {new_S}')
-new_S = extract_bracket(new_S)
-print(f'third is {new_S}')
+# print(f'first is {S}')
+# new_S = extract_bracket(S)
+# print(f'second is {new_S}')
+# new_S = extract_bracket(new_S)
+# print(f'third is {new_S}')
+# new_S = extract_bracket(new_S)
+# print(f'4th is {new_S}')
+
+print(is_VPS(S))
+while True:
+    result = S
+    S = extract_bracket(S)
+    # result = S
+    if len(S) == 0:
+        break
+    # S = extract_bracket(S)
+    # result = S
+print(result)
 
 
 
