@@ -55,7 +55,7 @@ def extract_bracket(S):
     return ''
 
 #-----------------------------
-S = '13(42(7))8'
+# S = '13(42(7))8'
 S = input()
 
 while True:

@@ -44,6 +44,7 @@ dictionary = make_dictionary(N)
 # print(f'dictionary is {dictionary}')
 
 for i in range(1,N+1):
+    initial = i
     turns = 1
     former, later = i, 0
     print(f'try {i} : [{former}, {later}]')
@@ -54,8 +55,12 @@ for i in range(1,N+1):
         M = max(dictionary[i])
         if turns%2 == 0: former += M
         else : later += M
+        # print(f'test before {dictionary[i]}')
+        # dictionary[i].remove(M)
+        # print(f'test after {dictionary[i]}')
+        if M == initial:
+            break
         i = M
-        # dictionary[i].pop(M)
         turns += 1
 
     print(f'The result is {[former, later]}')
