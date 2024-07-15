@@ -32,8 +32,8 @@ def find_unconnected(dict):
 
 # 1, 2
 def make_connected(graph, i, j):
-    graph[i][j-1] = 1
-    graph[j][i-1] = 1
+    graph[i][j-1] = 0
+    graph[j][i-1] = 0
     print(f'Trial 1 graph is {graph}')
 
 # find_unconnected({1: [0, 1, 0, 1], 2:[1, 0, 0, 0], 3:[0, 0, 0, 0], 4:[1, 0, 0, 0]})
@@ -41,7 +41,7 @@ def make_connected(graph, i, j):
 
 #----------------------------
 
-graph = {i: [0 for j in range(N)] for i in range(1, N+1)}
+graph = {i: [0 if i-1==j else 1 for j in range(N)] for i in range(1, N+1)}
 print(f'Initial graph is {graph}')
 # ---- {1: [0, 0, 0, 0, 0], 2: [], 3: [], 4: [], 5: []}
 
@@ -49,6 +49,7 @@ print(f'Initial graph is {graph}')
 # graph[1][1] = 1
 # graph[1+1][1-1] = 1
 # print(f'Trial 1 graph is {graph}')
+# >>>
 make_connected(graph, 1, 4)
 
 # for i in range(len(orders)):    
