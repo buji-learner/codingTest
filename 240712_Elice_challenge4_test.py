@@ -42,8 +42,8 @@ def sum_lists(input_list):
         # print(f'result {result}')
     return result
  
-test_list = [1, 2, 4]
-print(sum_lists(test_list))
+# test_list = [1, 2, 4]
+# print(sum_lists(test_list))
 
 
 #--------------
@@ -51,15 +51,38 @@ print(sum_lists(test_list))
 #--------------
 
 # input
-# N = int(input())
-# input_list = input().split(' ')
-# L = [int(i) for i in input_list]
-# print(f'given list is {L}') 
+N = int(input())
+input_list = input().split(' ')
+L = [int(i) for i in input_list]
+print(f'given list is {L}') 
 
-# sorted_L = sorted(L)[1:]
-# ini_elem = sorted_L[0]
-# ini_list = [ini_elem]
-# print(f'The smallest element is {ini_elem}')
+sorted_L = sorted(L)[1:]
+ini_elem = sorted_L[0]
+curr_list = [ini_elem]
+sorted_L.pop(0)
+print(f'The smallest element is {ini_elem}, {curr_list}')
+print(f'The sorted list is {sorted_L}')
+
+curr_sums = sum_lists(curr_list)
+print(f'The current sums are {curr_sums}')
+while(len(curr_list) < N):
+    if sorted_L[0] in curr_sums:
+        # print(f'yes {sorted_L[0]} in')
+        sorted_L.pop(0)
+        # print(f'----The sorted list is {sorted_L}')
+    else: 
+        # print('no')
+        curr_list.append(sorted_L[0])
+        sorted_L.pop(0)
+        curr_sums = sum_lists(curr_list)
+
+        # print(f'The current list is {curr_list}')
+        # print(f'The sorted list is {sorted_L}')
+        # print(f'The current sums are {curr_sums}')
+
+print(sorted(curr_list))
+to_str = [str(i) for i in curr_list]
+print(' '.join(to_str))
 
 # curr_list = ini_list
 # sorted_L = sorted_L[1:]
@@ -75,5 +98,4 @@ print(sum_lists(test_list))
 #     print(f'The sorted list is {sorted_L}')
 
     
-
 # 종결코드 : sum(list) == max(input_list)
