@@ -15,23 +15,40 @@ orders = [int(i) for i in input().split(' ')]
 
 def find_unconnected(dict):
     length = len(dict)
-    print(f'The length of dictionary is {length}.')
+    # print(f'The length of dictionary is {length}.')
 
     result = []
 
+    # 시간 복잡도 해결하기!
     for i in range(1, length+1):
-        print(f'i is {i}')
+        # print(f'i is {i}')
         for j in range(i, length):
-            print(f'j is {j}')
+            # print(f'j is {j}')
             if dict[i][j] == 0:
                 result.append([i, j+1])
-                print(result)
+                # print(result)
+    
+    return result
 
-find_unconnected({1: [0, 1, 0, 1], 2:[1, 0, 0, 0], 3:[0, 0, 0, 0], 4:[1, 0, 0, 0]})
+# 1, 2
+def make_connected(graph, i, j):
+    graph[i][j-1] = 1
+    graph[j][i-1] = 1
+    print(f'Trial 1 graph is {graph}')
+
+# find_unconnected({1: [0, 1, 0, 1], 2:[1, 0, 0, 0], 3:[0, 0, 0, 0], 4:[1, 0, 0, 0]})
 
 
 #----------------------------
 
-graph = {i: [] for i in range(1, N+1)}
-# print(f'Initial graph is {graph}')
-# ---- {1: [], 2: [], 3: [], 4: [], 5: []}
+graph = {i: [0 for j in range(N)] for i in range(1, N+1)}
+print(f'Initial graph is {graph}')
+# ---- {1: [0, 0, 0, 0, 0], 2: [], 3: [], 4: [], 5: []}
+
+# trial 1
+# graph[1][1] = 1
+# graph[1+1][1-1] = 1
+# print(f'Trial 1 graph is {graph}')
+make_connected(graph, 1, 4)
+
+# for i in range(len(orders)):    
