@@ -1,4 +1,4 @@
-# list = [7, 8]
+# list = [0, 1]
 # K = 4
 def meetK(list, K):
     for i in range(10):
@@ -7,9 +7,8 @@ def meetK(list, K):
             break
         if i not in list:
             list.append(i)
-    # print(list)
     return list
-# print(meetK(list, K))
+
 
 def smallestNum1(list):
     sorted_list = sorted(list)
@@ -17,10 +16,9 @@ def smallestNum1(list):
 
     result = 0
     while True:
-
         # base
         if len(sorted_list) < 1:
-            print('break')
+            # print('break')
             break
 
         # initial
@@ -30,11 +28,9 @@ def smallestNum1(list):
         
         result = result * 10 + sorted_list[0]
         sorted_list.pop(0)
-        # print(f'sorted_list {sorted_list}, result {result}')
-        
+  
     return result
 
-# print(smallestNum(list))
 
 def smallestNum0(list):
     sorted_list = sorted(list)
@@ -42,27 +38,28 @@ def smallestNum0(list):
 
     result = 0
     while True:
-
         # base
         if len(sorted_list) < 1:
-            print('break')
+            # print('break')
             break
         
         result = result * 10 + sorted_list[0]
         sorted_list.pop(0)
-        # print(f'sorted_list {sorted_list}, result {result}')
         
     return result
 
-#-------------------------
-N = '10'
-K = 3
-int_N = int(N)
-set_N = [0, 1]
+# --------------
+N, K = input().split(' ')
+# print(N, K)
+
+set_N = [int(N[i]) for i in range(len(N))]
+set_N = list(set(set_N))
+# print(set_N)
+int_N, K = int(N), int(K)
 
 numbers = meetK(set_N, K)
-print(f'numbers {numbers}')
-print(f'smallest {smallestNum1(numbers)}')
+# print(f'numbers {numbers}')
+# print(f'smallest1 {smallestNum1(numbers)}')
 
 if int_N > smallestNum1(numbers):
     numbers.remove(1)
